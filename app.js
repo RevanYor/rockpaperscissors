@@ -1,14 +1,13 @@
 const arr = ['rock','paper','scissor'];
-const user = prompt().toLowerCase();
+/* const user = prompt().toLowerCase(); */
 
-function getComputer() {
+/* function getComputer() {
     const choice = arr[(Math.floor(Math.random() * arr.length))];
     return choice;
 }
+const comp = getComputer(); */
 
-const comp = getComputer();
-
-function play(user,comp) {
+/* function play(user,comp) {
     if ((user === 'rock') && (comp === 'scissor')) {
         console.log('win');
     } else if ((user ==='paper') && (comp === 'rock')) {
@@ -26,7 +25,44 @@ function play(user,comp) {
     } else {
         console.log('nope');
     }
+} */
+
+function game() {
+
+    //makes the game run 5 times
+    for(i=0;i<5;i++){
+        //get the computer choice
+        function getComputer() {
+            const choice = arr[(Math.floor(Math.random() * arr.length))];
+            return choice;
+        }
+
+        const comp = getComputer();
+        const user = prompt().toLowerCase();
+        
+        //game function
+        function play(user,comp) {
+            if ((user === 'rock') && (comp === 'scissor')) {
+                console.log('win');
+            } else if ((user ==='paper') && (comp === 'rock')) {
+                console.log('win');
+            } else if ((user ==='scissor') && (comp === 'paper')) {
+                console.log('win');
+            } else if ((comp === 'rock') && (user === 'scissor')) {
+                console.log('lose');
+            } else if ((comp ==='paper') && (user === 'rock')) {
+                console.log('lose');
+            } else if ((comp ==='scissor') && (user === 'paper')) {
+                console.log('lose');
+            } else if (user === comp) {
+                console.log('tie');
+            } else {
+                console.log('nope');
+            }
+        }
+        play(user,comp);
+    }  
 }
 
-console.log(play(user,comp));
+console.log(game());
 //play();
