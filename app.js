@@ -2,6 +2,7 @@ const arr = ['rock','paper','scissor'];
 
 function game() {
 
+    let counter = 0;
     //makes the game run 5 times
     for(i=0;i<5;i++){
 
@@ -13,7 +14,6 @@ function game() {
 
         const comp = getComputer();
         const user = prompt().toLowerCase();
-        let counter = 0;
         //game function
         function play(user,comp) {
             
@@ -40,9 +40,14 @@ function game() {
             } else {
                 console.log('nope');
             }
-            console.log(counter);
         }
         play(user,comp);
-    }  
+    }
+    console.log(counter);
+    if(counter > 0) {
+        console.log('You won!');
+    } else {
+        console.log('You lose')
+    }
 }
 console.log(game());
