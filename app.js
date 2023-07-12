@@ -1,53 +1,54 @@
 const arr = ['rock','paper','scissor'];
+let rock = document.querySelector('#rock');
+let paper = document.querySelector('#paper');
+let scissor = document.querySelector('#scissor');
+let userChoice = 0;
 
-function game() {
+let choice = arr[(Math.floor(Math.random() * arr.length))];
+let puterCounter = 0;
+let playerCounter = 0;
+let counter = 0;
 
-    let counter = 0;
-    //makes the game run 5 times
-    for(i=0;i<5;i++){
+//get the user choice
+rock.addEventListener("click", () => {userChoice = 'rock'; });
+paper.addEventListener("click", () => {userChoice = 'paper';});
+scissor.addEventListener("click", () => {userChoice = 'scissor';});
 
-        //get the computer choice
-        function getComputer() {
-            const choice = arr[(Math.floor(Math.random() * arr.length))];
-            return choice;
-        }
 
-        const comp = getComputer();
-        const user = prompt().toLowerCase();
-        //game function
-        function play(user,comp) {
-            
-            if ((user === 'rock') && (comp === 'scissor')) {
-                console.log('win');
-                counter++;
-            } else if ((user ==='paper') && (comp === 'rock')) {
-                console.log('win');
-                counter++;
-            } else if ((user ==='scissor') && (comp === 'paper')) {
-                console.log('win');
-                counter++;
-            } else if ((comp === 'rock') && (user === 'scissor')) {
-                console.log('lose');
-                counter--;
-            } else if ((comp ==='paper') && (user === 'rock')) {
-                console.log('lose');
-                counter--;
-            } else if ((comp ==='scissor') && (user === 'paper')) {
-                console.log('lose');
-                counter--;
-            } else if (user === comp) {
-                console.log('tie');
-            } else {
-                console.log('nope');
-            }
-        }
-        play(user,comp);
-    }
-    console.log(counter);
-    if(counter > 0) {
-        console.log('You won!');
+//game function
+function play(userChoice,choice) {   
+    if ((userChoice === 'rock') && (choice === 'scissor')) {
+        console.log('win');
+        counter++;
+        playerCounter++;
+    } else if ((userChoice ==='paper') && (choice === 'rock')) {
+        console.log('win');
+        counter++;
+        playerCounter++;
+    } else if ((userChoice ==='scissor') && (choice === 'paper')) {
+        console.log('win');
+        counter++;
+        playerCounter++;
+    } else if ((choice === 'rock') && (userChoice === 'scissor')) {
+        console.log('lose');
+        counter--;
+        puterCounter++;
+    } else if ((choice ==='paper') && (userChoice === 'rock')) {
+        console.log('lose');
+        counter--;
+        puterCounter++;
+    } else if ((choice ==='scissor') && (userChoice === 'paper')) {
+        console.log('lose');
+        counter--;
+        puterCounter++;
+    } else if (userChoice === choice) {
+        console.log('tie');
     } else {
-        console.log('You lose')
+        console.log('nope');
     }
+    console.log(playerCounter);
 }
-console.log(game());
+
+rock.addEventListener("click", () => {play(userChoice, choice);});
+paper.addEventListener("click", () => {play(userChoice, choice);});
+scissor.addEventListener("click", () => {play(userChoice, choice);});
